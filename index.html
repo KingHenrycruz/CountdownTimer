@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            color: aliceblue;
+        }
+        body{
+            font-family: "Poppins", 'Sans-serif';
+            margin: 0;
+            background-image: url(istockphoto-1311473275-170667a.jpg);
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: baseline; */
+        }
+        h1{
+            font-size: 4rem;
+            line-height: 1;
+            font-weight: normal;
+            letter-spacing: 20px;
+        }
+        h4{
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 7rem;
+            font-weight: normal;
+        }
+
+        .countdown-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .big-text{
+            font-size: 6rem;
+            line-height: 1;
+            margin: 0 2.5rem;
+        }
+        .countdown-el{
+            text-align: center;
+        }
+        .countdown-el span{
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+<h1>2023</h1>
+<h4>Year of the Prolific Church</h4>
+
+<div class="countdown-container">
+    <div class="countdown-el days">
+        <p class="big-text" id="days">0</p>
+        <span>Days</span>
+        
+    </div>
+    
+    <div class="countdown-el hours">
+        <p class="big-text" id="hours">0</p>
+        <span>Hours</span>
+        
+    </div>
+
+    <div class="countdown-el minutes">
+        <p class="big-text" id="minutes">0</p>
+        <span>Minutes</span>
+        
+    </div>
+
+    <div class="countdown-el seconds">
+        <p class="big-text" id="seconds">0</p>
+        <span>Seconds</span>
+        
+    </div>
+</div>
+
+
+    <script>
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        const newYears = prompt("What date would you like to countdown to?");
+
+        function countdown(){
+            const newYearsDate = new Date(newYears);
+            const currentDate = new Date();
+
+            const totalSeconds = (newYearsDate - currentDate)/1000;
+            
+            const days = Math.floor(totalSeconds/3600/24);
+            const hours = Math.floor(totalSeconds/3600) % 24;
+            const minutes = Math.floor(totalSeconds/60) % 60;
+            const seconds = Math.floor(totalSeconds) % 60;
+
+            daysEl.innerHTML = days
+            hoursEl.innerHTML = hours
+            minutesEl.innerHTML = minutes
+            secondsEl.innerHTML = seconds
+        
+        }
+        countdown();
+
+        setInterval(countdown, 1000);
+
+    </script>
+    
+</body>
+</html>
